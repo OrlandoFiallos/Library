@@ -27,7 +27,7 @@ class InstanciaLibro(models.Model):
     id = models.UUIDField(primary_key=True,default= uuid.uuid4,help_text='ID único para este libro en toda la biblioteca')
     book = models.ForeignKey(Libro,on_delete=models.SET_NULL,null=True)
     imprint = models.CharField(max_length=200)
-    due_back = models.DateField(null=True,blank=True)
+    due_back = models.DateField(null=True,blank=True,help_text='Fecha de devolución')
 
     LOAN_STATUS = (
         ('M','Mantenimiento'),
