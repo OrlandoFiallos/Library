@@ -59,6 +59,9 @@ class Autor(models.Model):
     
     def __str__(self):
         return '%s, %s' % (self.last_name,self.first_name)
+    
+    class Meta:
+        ordering = ['first_name']
 
 class Idioma(models.Model):
     name = models.CharField('Idioma',max_length=20)
