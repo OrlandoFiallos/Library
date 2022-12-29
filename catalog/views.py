@@ -9,6 +9,10 @@ def index(request):
     num_instances = InstanciaLibro.objects.all().count()
     num_genres = Genero.objects.all().count()
     
+    #Número de visitas a esta vista, contadas en la variable de sesión
+    num_visits = request.session.get('num_visits',0)
+    request.session['num_visits'] = num_visits + 1
+    
     #Número de instancias disponibles filtradas por a (available)
     num_instances_available = InstanciaLibro.objects.filter(status__exact='a').count()
     num_authors = Autor.objects.all().count()
@@ -22,6 +26,7 @@ def index(request):
         'num_authors':num_authors,
         'num_genres':num_genres,
         'num_books_with_de_word':num_books_with_de_word,
+        'num_visits': num_visits
         
     }
     
